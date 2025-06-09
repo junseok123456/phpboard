@@ -11,10 +11,18 @@ $post = $result -> fetch_assoc();
 ?>
 
 <h1>게시글 수정</h1>
-<form action="update.php" method="post">
+<form id="updateForm" action="update.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?= $post['id'] ?>">
     제목: <input type="text" name="title" value="<?= htmlspecialchars($post['title']) ?>"><br>
     내용: <br><textarea name="content"><?= htmlspecialchars($post['content']) ?></textarea><br>
     <button type="submit">수정</button>
 </form>
 <a href="index.php">목록으로</a>
+
+<script>
+    document.getElementById('updateForm').addEventListener('submit', function(e) {
+        if (!confirm('수정하시겠습니까?')) {
+            e.preventDefault();
+        }
+    });
+</script>

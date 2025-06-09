@@ -4,7 +4,7 @@
 <hr>
 
 <?php
-$sql = "SELECT * FROM posts ORDER BY id DESC";
+$sql = "SELECT * FROM inquiries ORDER BY id DESC";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {

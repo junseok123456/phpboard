@@ -1,12 +1,20 @@
 <?php
 include 'db.php';
 
-$title = $_POST['title'];
-$content = $_POST['content'];
+$title = $_POST['title'] ?? '';
+$name = $_POST['name'] ?? '';
+$contact = $_POST['contact'] ?? '';
+$email = $_POST['email'] ?? '';
+$company = $_POST['company'] ?? '';
+$position = $_POST['position'] ?? '';
 
-$sql = "INSERT INTO posts (title, content) VALUES (?, ?)";
+$sql = "INSERT INTO inquiries (title, name, contact, email, company, position) VALUES (?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt -> bind_param("ss", $title, $content);
-$stmt -> execute();
+if (!$stmt) {
+    echo "fail";
+    exit;
+}
+$stmt->bind_param("ssssss", $title, $name, $contact, $email, $company, $position);
+$success = $stmt->execute();
 
-header("Location: index.php");
+echo $success ? "success" : "fail";
