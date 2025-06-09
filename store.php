@@ -1,4 +1,5 @@
 <?php
+global $conn;
 include 'db.php';
 
 $title = $_POST['title'] ?? '';
@@ -8,7 +9,19 @@ $email = $_POST['email'] ?? '';
 $company = $_POST['company'] ?? '';
 $position = $_POST['position'] ?? '';
 
-$sql = "INSERT INTO inquiries (title, name, contact, email, company, position) VALUES (?, ?, ?, ?, ?, ?)";
+$sql = "
+    INSERT INTO inquiries (
+        title, 
+        name, 
+        contact, 
+        email, 
+        company, 
+        position
+        ) VALUES (
+            ?, ?, ?, ?, ?, ?
+            )
+       ";
+
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
     echo "fail";

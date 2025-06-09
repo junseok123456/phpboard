@@ -1,4 +1,7 @@
-<?php include 'db.php'; ?>
+<?php
+global $conn;
+include 'db.php';
+?>
 <h1>게시글 목록</h1>
 <a href="create.php">글쓰기</a>
 <hr>

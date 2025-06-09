@@ -1,4 +1,5 @@
 <?php
+global $conn;
 include 'db.php';
 
 $id = isset($_POST['id']) ? intval($_POST['id']) : 0;

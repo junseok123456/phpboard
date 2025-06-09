@@ -1,4 +1,5 @@
 <?php
+global $conn;
 include 'db.php';
 
 $id = $_POST['id'];
@@ -9,9 +10,18 @@ $email = $_POST['email'];
 $company = $_POST['company'];
 $position = $_POST['position'];
 
-$sql = "UPDATE inquiries SET title = ?, SET name = ?, contact = ?, SET email = ?, SET company = ?, SET position = ? WHERE id = ?";
+$sql = "
+UPDATE inquiries SET
+    title = ?, 
+    name = ?, 
+    contact = ?, 
+    email = ?, 
+    company = ?, 
+    position = ? 
+  WHERE id = ?
+  ";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssi", $title, $content, $id);
+$stmt->bind_param("ssssssi", $title, $name, $contact, $email, $company, $position, $id);
 $stmt->execute();
 
 header("Location: show.php?id=" . $id);
