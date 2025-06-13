@@ -3,7 +3,7 @@
     제목: <input type="text" name="title"><br>
     작성자: <br> <input type="text" name="name"> <br>
     내용: <br> <textarea name="contact"></textarea><br>
-    이메일: <br> <input type="text" name="email"> <br>
+    이메일: <br> <input type="email" name="email"> <br>
     회사: <br> <input type="text" name="company"> <br>
     직급: <br> <input type="text" name="position"> <br>
     <button type="submit">저장</button>
